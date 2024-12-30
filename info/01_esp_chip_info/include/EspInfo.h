@@ -20,9 +20,11 @@ private:
     // Chip
     esp_chip_info_t chipInfo;
     uint64_t macId;
+    const char* sdkVersion;
     int cpuFreq;
     uint32_t flashSize;
     uint32_t flashSpeed;
+    size_t sketchSize;
 
     // SPIFFS
     uint32_t totalBytes;

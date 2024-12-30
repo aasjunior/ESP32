@@ -11,11 +11,14 @@ EspInfo::~EspInfo(){
 void EspInfo::getChipInfo(){
     esp_chip_info(&chipInfo);
     macId = ESP.getEfuseMac();
+    sdkVersion = ESP.getSdkVersion();
     flashSize = ESP.getFlashChipSize() / (1024 * 1024);
     flashSpeed = ESP.getFlashChipSpeed() / 1000000;
     cpuFreq = ESP.getCpuFreqMHz();
+    sketchSize = ESP.getSketchSize();
 
     Serial.printf("Chip ID: %u\n", macId);
+    Serial.printf("SDK Version: %s", sdkVersion);
     Serial.printf("Model: %d\n", chipInfo.model);
     Serial.printf("Cores: %d\n", chipInfo.cores);
     Serial.printf("Features: %d\n", chipInfo.features);
@@ -24,6 +27,7 @@ void EspInfo::getChipInfo(){
     Serial.printf("Flash: %dMB %s\n", flashSize,
                 (chipInfo.features & CHIP_FEATURE_EMB_FLASH) ? "embedded" : "external");
     Serial.printf("Flash Speed: %u MHz\n", flashSpeed);
+    Serial.printf("Sketch Size: %u KB\n", sketchSize / 1024);
 }
 
 void EspInfo::getSPIFFSInfo(){
