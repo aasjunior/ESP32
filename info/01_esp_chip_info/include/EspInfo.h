@@ -19,7 +19,7 @@ public:
 private:
     // Chip
     esp_chip_info_t chipInfo;
-    uint8_t macId;
+    uint64_t macId;
     int cpuFreq;
     uint32_t flashSize;
     uint32_t flashSpeed;
