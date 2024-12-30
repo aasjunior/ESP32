@@ -24,6 +24,11 @@ O **ESP32** é um **microcontrolador** de baixo custo e alto desempenho, desenvo
 - PlatformIO
 - Placa Esp32
 
+Com o Python instalado, execute o seguinte comando:
+```bash
+pip install platformio
+```
+
 ## Tecnologias
 
 <br>
