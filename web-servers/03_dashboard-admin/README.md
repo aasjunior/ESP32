@@ -33,12 +33,12 @@ pio device monitor
 - [x] Servir pagina principal com dados estáticos
 
 - [ ] Exibir informações do dispositivo em tempo real
-    - `EspInfo`
+    - `EspInfo` ([esp_chip_info](https://github.com/aasjunior/ESP32/tree/main/info/01_esp_chip_info))
     - FreeRTOS
 
 - [ ] Implementar Access Point para servir a aplicação
 
-- [ ] Implementar form para se conectar ao wifi
+- [ ] Implementar form para se conectar ao wifi ([access_point](https://github.com/aasjunior/ESP32/tree/main/web-servers/02_access-point))
     - Preferences para salvar ssid e senha 
 
 - [ ] Implementar página para gerenciar redes salvas
