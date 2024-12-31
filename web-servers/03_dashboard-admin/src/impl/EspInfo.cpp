@@ -20,16 +20,16 @@ ChipInfo EspInfo::getChipInfo(){
     return chipInfo;
 }
 
-SPIFFSInfo EspInfo::getSPIFFSInfo(){
-    if(!SPIFFS.begin()){
-        Serial.println("An error has occurred while mounting SPIFFS :( .");
-        // return;
+LittleFSInfo EspInfo::getLittleFSInfo(){
+    if(!LittleFS.begin()){
+        Serial.println("An error has occurred while mounting LittleFS :( .");
+        //return;
     }
 
-    spiffsInfo.totalBytes = SPIFFS.totalBytes();
-    spiffsInfo.usedBytes = SPIFFS.usedBytes();
+    littleFSInfo.totalBytes = LittleFS.totalBytes();
+    littleFSInfo.usedBytes = LittleFS.usedBytes();
 
-    return spiffsInfo;
+    return littleFSInfo;
 }
 
 HeapInfo EspInfo::getHeapInfo(){

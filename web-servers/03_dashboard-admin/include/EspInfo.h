@@ -6,7 +6,7 @@
 #include <esp_system.h>
 #include <esp_spi_flash.h>
 #include <esp_heap_caps.h>
-#include <SPIFFS.h>
+#include <LittleFS.h>
 
 struct ChipInfo {
     esp_chip_info_t chipInfo;
@@ -18,7 +18,7 @@ struct ChipInfo {
     size_t sketchSize;
 };
 
-struct SPIFFSInfo {
+struct LittleFSInfo {
     uint32_t totalBytes;
     uint32_t usedBytes;
 };
@@ -33,13 +33,13 @@ public:
     EspInfo(); // Construtor
     ~EspInfo(); // Destrutor
     ChipInfo getChipInfo();
-    SPIFFSInfo getSPIFFSInfo();
+    LittleFSInfo getLittleFSInfo();
     HeapInfo getHeapInfo();
     float getInternalTemp();
 
 private:
     ChipInfo chipInfo;
-    SPIFFSInfo spiffsInfo;
+    LittleFSInfo littleFSInfo;
     HeapInfo heapInfo;
     float internalTemp;   
 };

@@ -1,5 +1,5 @@
 #include "StaticFileRoutes.h"
-#include <SPIFFS.h>
+#include <LittleFS.h>
 
 // Inicialização do mapa de tipos MIME 
 const std::unordered_map<String, String> StaticFileRoutes::mimeTypes = { 
@@ -18,13 +18,13 @@ const std::unordered_map<String, String> StaticFileRoutes::mimeTypes = {
 void StaticFileRoutes::serverFileRoutes(AsyncWebServer &server){
     // Servindo arquivos estáticos (HTML, CSS, JS)
     server.on("/", HTTP_GET, [](AsyncWebServerRequest *request) {
-        request->send(SPIFFS, "/index.html", "text/html");
+        request->send(LittleFS, "/index.html", "text/html");
     });
     server.on("/assets/css/styles.css", HTTP_GET, [](AsyncWebServerRequest *request) {
-        request->send(SPIFFS, "/assets/css/styles.css", "text/css");
+        request->send(LittleFS, "/assets/css/styles.css", "text/css");
     });
     server.on("/assets/js/main.js", HTTP_GET, [](AsyncWebServerRequest *request) {
-        request->send(SPIFFS, "/assets/js/main.js", "application/javascript");
+        request->send(LittleFS, "/assets/js/main.js", "application/javascript");
     });
 
     // Servindo arquivos de imagens (MIME -> image/svg, image/png, ...)
@@ -32,7 +32,7 @@ void StaticFileRoutes::serverFileRoutes(AsyncWebServer &server){
     server.on("/assets/imgs/*", HTTP_GET, [](AsyncWebServerRequest *request) { 
         String path = request->url(); 
         String contentType = StaticFileRoutes::getContentType(path); 
-        request->send(SPIFFS, path, contentType); 
+        request->send(LittleFS, path, contentType); 
     });
 }
 
