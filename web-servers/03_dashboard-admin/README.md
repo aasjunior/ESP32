@@ -27,3 +27,13 @@ pio device monitor
 ```
 
 4. Acesse a página HTML pelo IP do **ESP32** (`http://<IP_DO_ESP32>`).
+
+## Implementar
+
+- [x] Servir pagina principal com dados estáticos
+- [ ] Exibir informações do dispositivo em tempo real
+- [ ] Implementar Access Point para servir a aplicação
+- [ ] Implementar form para se conectar ao wifi
+- [ ] Implementar página para gerenciar redes salvas
+- [ ] Implementar página interativa para testes de entraida e saída dos pinos do dispositivo
+- [ ] Exibir modelos de esp e pinagem
