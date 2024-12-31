@@ -15,6 +15,7 @@ public:
     void getChipInfo();
     void getSPIFFSInfo();
     void getHeapInfo();
+    void getInternalTemp();
 
 private:
     // Chip

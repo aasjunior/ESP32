@@ -14,7 +14,13 @@ O **ESP32** é um **microcontrolador** de baixo custo e alto desempenho, desenvo
 
 <img width='100' src='https://github.com/aasjunior/esp32_web_server/assets/61213599/3e1dfffe-fdc8-4408-9261-926fbe91929a' alt='Esp32'>
 
-<br>
+##### Principais Projetos
+
+- [Dashboard Admin](https://github.com/aasjunior/ESP32/tree/main/web-servers/03_dashboard-admin) para visualização e gerenciamento do Esp32
+- [Servidor Web](https://github.com/aasjunior/esp32_web_server) com modulo MicroSD
+- [Servidor Web](https://github.com/aasjunior/ESP32/tree/main/web-servers/01_web-server) para visualização do estado de botões
+- [Access Point](https://github.com/aasjunior/ESP32/tree/main/web-servers/02_access-point) para conectar o Esp32 em alguma rede Wi-Fi disponível
+
 <br>
 
 ## Configuração do Ambiente
