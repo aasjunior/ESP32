@@ -33,22 +33,19 @@ pio device monitor
 - [x] Servir pagina principal com dados estáticos
 
 - [ ] Exibir informações do dispositivo em tempo real
-
+    - `EspInfo`
     - FreeRTOS
 
 - [ ] Implementar Access Point para servir a aplicação
 
 - [ ] Implementar form para se conectar ao wifi
-
     - Preferences para salvar ssid e senha 
 
 - [ ] Implementar página para gerenciar redes salvas
-
     - Editar
     - Excluir
 
 - [ ] Implementar página interativa para testes de entraida e saída dos pinos do dispositivo
-
     - on/off para ativar saída nos pinos de acordo com o modelo
     - testar entrada com push-button 🤷‍♂️
 
