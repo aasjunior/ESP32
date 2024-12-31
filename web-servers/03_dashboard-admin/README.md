@@ -1,4 +1,4 @@
-# Esp32 Dashboard
+# Dashboard Admin
 
 Sistema web para visualização das informações do **Esp32**, através de um Dashboard.
 
