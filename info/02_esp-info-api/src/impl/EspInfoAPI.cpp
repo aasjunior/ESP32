@@ -6,7 +6,7 @@ EspInfo EspInfoAPI::espInfo;
 void EspInfoAPI::serverAPIRoutes(AsyncWebServer &server) {
     server.on("/api/chipinfo", HTTP_GET, [](AsyncWebServerRequest *request){
         ChipInfo chipInfo = espInfo.getChipInfo();
-        StaticJsonDocument<256> doc;
+        JsonDocument doc;
         doc["model"] = chipInfo.chipInfo.model;
         doc["macId"] = chipInfo.macId;
         doc["sdkVersion"] = chipInfo.sdkVersion;
@@ -22,7 +22,7 @@ void EspInfoAPI::serverAPIRoutes(AsyncWebServer &server) {
 
     server.on("/api/littlefsinfo", HTTP_GET, [](AsyncWebServerRequest *request){
         LFSInfo littleFsInfo = espInfo.getLFSInfo();
-        StaticJsonDocument<128> doc;
+        JsonDocument doc;
         doc["totalBytes"] = littleFsInfo.totalBytes;
         doc["usedBytes"] = littleFsInfo.usedBytes;
 
@@ -33,7 +33,7 @@ void EspInfoAPI::serverAPIRoutes(AsyncWebServer &server) {
     
     server.on("/api/heapinfo", HTTP_GET, [](AsyncWebServerRequest *request){
         HeapInfo heapInfo = espInfo.getHeapInfo();
-        StaticJsonDocument<128> doc;
+        JsonDocument doc;
         doc["heapSize"] = heapInfo.heapSize;
         doc["freeHeapSize"] = heapInfo.freeHeapSize;
 
@@ -44,7 +44,7 @@ void EspInfoAPI::serverAPIRoutes(AsyncWebServer &server) {
     
     server.on("/api/internaltemp", HTTP_GET, [](AsyncWebServerRequest *request){
         float internalTemp = espInfo.getInternalTemp();
-        StaticJsonDocument<64> doc;
+        JsonDocument doc;
         doc["internalTemp"] = internalTemp;
 
         String response;
