@@ -1,0 +1,292 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+:root{
+    --bg-color: #202c46;
+    --primary-blue: #202c46;
+    --secondary-blue: #0c6efc;
+    --terciary-blue: #33446c;
+    --primary-gray: #646477;
+    --secondary-gray: #8d98af;
+    --primary-green: #73d3a5;
+    --secondary-green: #deffec;
+    --primary-pink: #e44770;
+    --secondary-pink: #ffebf5;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', Helvetica, sans-serif;
+}
+
+body {
+    font-family: var(--font-family, Arial, sans-serif);
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+h1 {
+    font-size: 22px;
+}
+
+h2 {
+    font-size: 20px;
+}
+
+h3 {
+    font-size: 16px;
+}
+
+h4 {
+    font-size: 16px;
+    color: var(--primary-gray);
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+ul {
+    padding: 2px;
+    color: var(--secondary-gray);
+    font-size: 14px;
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+li {
+    padding: 8px 12px;
+}
+
+span{
+    display: inline-block;
+}
+
+.nav-item{
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.nav-item:hover {
+    color: #f4f4f4;
+}
+
+li.active{
+    background-color: var(--secondary-blue);
+    border-radius: 10px;
+    color: #f4f4f4;
+}
+
+.sidebar{
+    position: fixed;
+    background-color: var(--bg-color);
+    color: #f4f4f4;
+    width: 220px;
+    height: 100vh;
+    z-index: 1;
+}
+
+.header-nav{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: 1px dashed var(--terciary-blue);
+    padding: 12px 16px;
+}
+
+.nav-items {
+    padding: 16px;
+}
+
+.logo {
+    width: 28px;
+    height: 28px;
+    margin-right: 12px;
+    background-image: url(../imgs/espressif_icon.svg);
+    background-size: contain; /* Ajusta a imagem para conter dentro do elemento */
+    background-position: center; /* Centraliza a imagem dentro do elemento */
+    background-repeat: no-repeat; /* Evita que a imagem se repita */
+    filter: invert(1); /* Ajusta as cores do ícone */
+}
+
+
+header{
+    position: relative;
+    top: 0;
+    width: 100%;
+    background-color: #fff;
+    padding: 10px;
+    padding-left: 232px;
+    z-index: 0;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.wifi-icon{
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #eee;
+    background-size: 50% 50%; /* Ajusta a imagem para conter dentro do elemento */
+    background-position: center; /* Centraliza a imagem dentro do elemento */
+    background-repeat: no-repeat; /* Evita que a imagem se repita */
+    cursor: pointer;
+}
+
+.wifi{
+    background-image: url(../imgs/wifi.svg);
+}
+
+.wifi-slash{
+    background-image: url(../imgs/wifi-slash.svg);
+}
+
+main{
+    position: relative;
+    margin-left: 220px;
+    padding: 12px;
+}
+
+.card{
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    font-size: 14px;
+    color: var(--primary-gray);
+}
+
+.card > h3{
+    color: #000;
+}
+
+.card > p {
+    padding: 8px 0;
+}
+
+.bd-dashed {
+    border-bottom: 1px dashed var(--secondary-gray);
+}
+
+table{
+    width: 100%;
+}
+td{
+    border-bottom: 1px dashed var(--secondary-gray);
+    padding: 8px 0;
+}
+
+tr td:last-child{
+    text-align: end;
+}
+
+.progress-container { 
+    width: 100%; 
+    background-color: #f3f3f3; 
+    border-radius: 10px; 
+    overflow: hidden; 
+}
+
+.progress-bar { 
+    width: 80%; 
+    height: 10px; 
+    background-color: #4caf50;
+    border-radius: 10px 0 0 10px;
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+}
+
+.col{
+    display: flex;
+    flex-direction: column;
+}
+
+.space-between{
+    justify-content: space-between;
+}
+
+.temp{
+    border-radius: 12px;
+    padding: 0 12px;
+    background-color: var(--secondary-green);
+    font-size: 42px;
+    color: var(--primary-green);
+    display: flex;
+    align-items: center;
+}
+
+.grid{
+    display: grid;
+    gap: 16px;
+    grid-template-areas:
+       "head head"
+       "chip spiffs"
+       "temperature heap"
+    ;
+}
+
+.chip{
+    grid-area: chip;
+}
+
+.spiffs{
+    grid-area: spiffs;
+}
+
+.heap{
+    grid-area: heap;
+}
+
+.temperature{
+    grid-area: temperature;
+}
+
+.head{
+    grid-area: head;
+}
+
+.container-circular {
+    width: 200px;
+    height: 200px;
+    position: relative;
+    background-color: #f3f3f3;
+    border-radius: 50%;
+}
+
+.barra-circular {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    clip: rect(0, 200px, 200px, 100px);
+    background-color: transparent;
+}
+
+.preenchimento-circular {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    clip: rect(0, 100px, 200px, 0);
+    background-color: #4caf50;
+    transform: rotate(270deg); /* Ajuste de rotação para 75% */
+    transform-origin: 50% 50%;
+}
+
+.texto-circular {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    font-weight: bold;
+}

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./assets/imgs/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <title>Esp32</title>
+</head>
+<body>
+    <nav class="sidebar">
+        <div class="header-nav">
+            <span class="logo"></span>
+            <h1>Esp32</h1>
+        </div>
+        <div class="nav-items">
+            <h4>Sobre</h4>
+            <ul>
+                <li class="nav-item active">Dashboard</li>
+            </ul>
+
+            <h4>WiFi</h4>
+            <ul>
+                <li class="nav-item">Conectar nova rede</li>
+                <li class="nav-item">Redes Salvas</li>
+            </ul>
+
+            <h4>Pinout</h4>
+            <ul>
+                <li class="nav-item">Modelos</a></li>
+                <li class="nav-item">Testar</a></li>
+            </ul>
+        </div> 
+    </nav>
+    <header class="row">
+        <!-- <span id="esp-model">Esp32 - Dev Module</span> -->
+        <p>MAC Address: <span id="mac-address">XXXX-XXX-XX</span></p>
+        <div class="wifi-info">
+            <span class="wifi-icon wifi-slash"></span>
+        </div>
+    </header>
+    <main class="grid">
+        <div class="head">
+            <h2>Dashboard</h2>
+            Home > Dashboard
+        </div>
+        <div class="card chip">
+            <h3>Tipo do Chip e Dados do Processador</h3>
+
+            <table>
+                <tr>
+                    <td>Chip Model</td>
+                    <td id="chip-model">chip_model</td>
+                </tr>
+                <tr>
+                    <td>Number of Cores</td>
+                    <td id="chip-cores">chip_cores</td>
+                </tr>
+                <tr>
+                    <td>Silicon Revision</td>
+                    <td id="silicon-rev">silicon_revision</td>
+                </tr>
+                <tr>
+                    <td>CPU Frequency</td>
+                    <td><span id="cpu-freq">240</span> MHz</td>
+                </tr>
+            </table>
+        </div>
+        <div class="card spiffs col space-between">
+            <div>
+                <h3>Armazenamento e SPIFFS</h3>
+                <p>Total SPIFFS Space: <span id="spiffs-total">0</span> bytes</p>
+            </div>
+            <div>
+                <div class="row space-between">
+                    <p>Used <span id="spiffs-used">0</span> bytes</p>
+                    <p><span id="spiffs-perc">80</span>%</p>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar" id="spiffs-bar"></div>
+                </div>
+            </div>
+        </div>
+        <div class="card heap col space-between">
+            <div>
+                <h3>Memória (Heap)</h3>
+                <p>Total Heap Space: <span id="heap-total">0</span> bytes</p>
+            </div><br>
+
+            <div>
+                <div class="row space-between">
+                    <p>Free Heap <span id="heap-used">0</span> bytes</p>
+                    <p><span id="heap-perc">80</span>%</p>
+                </div>
+                <div class="progress-container">
+                    <div class="progress-bar" id="heap-bar"></div>
+                </div>
+                
+            </div>
+        </div>
+        <div class="card row space-between temperature">
+            <div>
+                <h3>Temperatura do Chip</h3>
+                <p>Chip Temperature</p>
+            </div>
+            <div class="temp"><span id="chip-temp">47</span>°C</div>
+        </div>
+    </main>
+    <script src="./assets/js/main.js"></script>
+</body>
+</html>
