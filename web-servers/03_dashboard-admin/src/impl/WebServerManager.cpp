@@ -1,5 +1,6 @@
 #include "WebServerManager.h"
 #include "StaticFileRoutes.h"
+#include "EspInfoAPI.h"
 #include <SPIFFS.h>
 
 WebServerManager::WebServerManager() : server(80){
@@ -18,6 +19,7 @@ void WebServerManager::begin() {
     }
 
     StaticFileRoutes::serverFileRoutes(server);
+    EspInfoAPI::serverAPIRoutes(server);
     server.begin();
     Serial.println("HTTP server started");
 }

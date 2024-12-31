@@ -33,7 +33,7 @@ pio device monitor
 - [x] Servir pagina principal com dados estáticos
 
 - [ ] Exibir informações do dispositivo em tempo real
-    - `EspInfo` ([esp_chip_info](https://github.com/aasjunior/ESP32/tree/main/info/01_esp_chip_info))
+    - ~~`EspInfo`~~ ok
     - FreeRTOS
 
 - [ ] Implementar Access Point para servir a aplicação

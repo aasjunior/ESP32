@@ -14,7 +14,6 @@ namespace std {
     };
 }
 
-
 class StaticFileRoutes {
 public:
     static void serverFileRoutes(AsyncWebServer &server); // & -> referência ao servidor
