@@ -190,7 +190,7 @@ tr td:last-child{
 }
 
 .progress-bar { 
-    width: 80%; 
+    /* width: 80%;  */
     height: 10px; 
     background-color: #4caf50;
     border-radius: 10px 0 0 10px;

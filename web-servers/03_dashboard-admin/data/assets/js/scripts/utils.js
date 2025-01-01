@@ -22,6 +22,19 @@ export function updateTextContent(elementId, textContent){
     document.getElementById(elementId).textContent = textContent;
 }
 
+export function updateProgressBar(elementId, percentage) {
+    /**
+     * Função para atualizar a barra de progresso
+     * @param {string} elementId - ID do elemento HTML com.
+     * @param  {number} percentage - Valor da porcentagem para atualizar o preenchimento da barra de progresso.
+     */
+    const progressBar = document.getElementById(elementId);
+    if(progressBar){
+        const percentageValue = parseFloat(percentage).toFixed(1); 
+        progressBar.style.width = percentageValue + '%';
+    }
+}
+
 export function calculatePercentage(portion, total) {
     if(total === 0 || !isNumber(portion) || !isNumber(total)) {
         return 'N/A';

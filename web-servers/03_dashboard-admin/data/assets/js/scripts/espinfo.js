@@ -1,4 +1,4 @@
-import { fetchData, updateTextContent, calculateSubtraction, calculatePercentage, getTempCelsius } from './utils.js';
+import { fetchData, updateTextContent, updateProgressBar, calculateSubtraction, calculatePercentage, getTempCelsius } from './utils.js';
 
 // Mapeamento dos endpoints da API de info do Esp32
 const espInfoAPI = {
@@ -19,23 +19,29 @@ function processChipInfo(data){
     updateTextContent('sketch-size', data.sketchSize);
 }
 
-function processLittleFSInfo(data) { 
-    updateTextContent('littlefs-total', data.totalBytes); 
-    updateTextContent('littlefs-used', data.usedBytes); 
-    updateTextContent(
-        'littlefs-perc', 
-        calculatePercentage(data.usedBytes, data.totalBytes)
-    ); 
+function processLittleFSInfo(data) {
+    const usedBytes = data.usedBytes;
+    const totalBytes = data.totalBytes;
+    const percentage = calculatePercentage(data.usedBytes, data.totalBytes);
+
+    updateTextContent('littlefs-total', totalBytes); 
+    updateTextContent('littlefs-used', usedBytes); 
+    updateTextContent('littlefs-perc', percentage);
+    
+    updateProgressBar('littlefs-bar', percentage);
 }
 
 function processHeapInfo(data) { 
-    let heapUsed = calculateSubtraction(data.heapSize, data.freeHeapSize); 
+    const heapSize = data.heapSize;
+    const freeHeapSize = data.freeHeapSize;
+    const heapUsed = calculateSubtraction(heapSize, freeHeapSize);
+    const percentage = calculatePercentage(heapUsed, heapSize);
+
     updateTextContent('heap-total', data.heapSize);
     updateTextContent('heap-used', heapUsed); 
-    updateTextContent(
-        'heap-perc', 
-        calculatePercentage(heapUsed, data.heapSize)
-    ); 
+    updateTextContent('heap-perc', percentage);
+
+    updateProgressBar('heap-bar', percentage);
 }
 
 function processInternalTemp(data) { 
