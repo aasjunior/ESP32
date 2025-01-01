@@ -225,7 +225,7 @@ tr td:last-child{
     gap: 16px;
     grid-template-areas:
        "head head"
-       "chip spiffs"
+       "chip littlefs"
        "temperature heap"
     ;
 }
@@ -234,8 +234,8 @@ tr td:last-child{
     grid-area: chip;
 }
 
-.spiffs{
-    grid-area: spiffs;
+.littlefs{
+    grid-area: littlefs;
 }
 
 .heap{
