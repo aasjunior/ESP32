@@ -34,6 +34,12 @@ void StaticFileRoutes::serverFileRoutes(AsyncWebServer &server){
         String contentType = StaticFileRoutes::getContentType(path); 
         request->send(LittleFS, path, contentType); 
     });
+
+    server.on("/assets/js/scripts/*", HTTP_GET, [](AsyncWebServerRequest *request) { 
+        String path = request->url(); 
+        String contentType = StaticFileRoutes::getContentType(path); 
+        request->send(LittleFS, path, contentType); 
+    });
 }
 
 String StaticFileRoutes::getContentType(const String& filename) { 
