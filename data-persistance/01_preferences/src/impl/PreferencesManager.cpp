@@ -11,114 +11,80 @@ PreferencesManager::~PreferencesManager(){
 
 template <>
 void PreferencesManager::saveData<int>(const std::string& key, const int& value){
-    if(!preferences.isKey(key.c_str())){
-        preferences.end();
-        preferences.begin(namespaceName, false);
-        preferences.putInt(key.c_str(), value);
-        preferences.end();
-    }
+    preferences.end();
+    preferences.begin(namespaceName, false);
+    preferences.putInt(key.c_str(), value);
 
-    preferences.begin(namespaceName, true);
     Serial.println("Valor salvo com sucesso:");
     Serial.print(key.c_str());
     Serial.print(": ");
     Serial.println(preferences.getInt(key.c_str(), 0));
+    preferences.end();
 }
 
 template <>
 void PreferencesManager::saveData<float>(const std::string& key, const float& value){
-    if(!preferences.isKey(key.c_str())){
-        preferences.end();
-        preferences.begin(namespaceName, false);
-        preferences.putFloat(key.c_str(), value);
-        preferences.end();
-    }
-
-    preferences.begin(namespaceName, true);
+    preferences.end();
+    preferences.begin(namespaceName, false);
+    preferences.putFloat(key.c_str(), value);
+    
     Serial.println("Valor salvo com sucesso:");
     Serial.print(key.c_str());
     Serial.print(": ");
     Serial.println(preferences.getFloat(key.c_str(), 0.0));
+    preferences.end();
 }
 
 template <>
 void PreferencesManager::saveData<double>(const std::string& key, const double& value){
-    if(!preferences.isKey(key.c_str())){
-        preferences.end();
-        preferences.begin(namespaceName, false);
-        preferences.putDouble(key.c_str(), value);
-        preferences.end();
-    }
-
-    preferences.begin(namespaceName, true);
+    preferences.end();
+    preferences.begin(namespaceName, false);
+    preferences.putDouble(key.c_str(), value);
+    
     Serial.println("Valor salvo com sucesso:");
     Serial.print(key.c_str());
     Serial.print(": ");
     Serial.println(preferences.getDouble(key.c_str(), 0.0));
+    preferences.end();
 }
 
 template <>
 void PreferencesManager::saveData<std::string>(const std::string& key, const std::string& value){
-    if(!preferences.isKey(key.c_str())){
-        preferences.end();
-        preferences.begin(namespaceName, false);
-        preferences.putString(key.c_str(), value.c_str());
-        preferences.end();
-    }
-
-    preferences.begin(namespaceName, true);
+    preferences.end();
+    preferences.begin(namespaceName, false);
+    preferences.putString(key.c_str(), value.c_str());
+    
     Serial.println("Valor salvo com sucesso:");
     Serial.print(key.c_str());
     Serial.print(": ");
     Serial.println(preferences.getString(key.c_str(), "null"));
+    preferences.end();
 }
 
 template <>
 void PreferencesManager::saveData<const char*>(const std::string& key, const char* const& value){
-    if(!preferences.isKey(key.c_str())){
-        preferences.end();
-        preferences.begin(namespaceName, false);
-        preferences.putString(key.c_str(), value);
-        preferences.end();
-    }
-
-    preferences.begin(namespaceName, true);
+    preferences.end();
+    preferences.begin(namespaceName, false);
+    preferences.putString(key.c_str(), value);
+    
     Serial.println("Valor salvo com sucesso:");
     Serial.print(key.c_str());
     Serial.print(": ");
     Serial.println(preferences.getString(key.c_str(), "null"));
-}
-
-template <>
-void PreferencesManager::saveData<char[6]>(const std::string& key, const char (&value)[6]) {
-    if(!preferences.isKey(key.c_str())){
-        preferences.end();
-        preferences.begin(namespaceName, false);
-        preferences.putString(key.c_str(), value);
-        preferences.end();
-    }
-
-    preferences.begin(namespaceName, true);
-    Serial.println("Valor salvo com sucesso:");
-    Serial.print(key.c_str());
-    Serial.print(": ");
-    Serial.println(preferences.getString(key.c_str(), "null"));
+    preferences.end();
 }
 
 template <>
 void PreferencesManager::saveData<bool>(const std::string& key, const bool& value){
-    if(!preferences.isKey(key.c_str())){
-        preferences.end();
-        preferences.begin(namespaceName, false);
-        preferences.putBool(key.c_str(), value);
-        preferences.end();
-    }
-
-    preferences.begin(namespaceName, true);
+    preferences.end();
+    preferences.begin(namespaceName, false);
+    preferences.putBool(key.c_str(), value);
+    
     Serial.println("Valor salvo com sucesso:");
     Serial.print(key.c_str());
     Serial.print(": ");
     Serial.println(preferences.getBool(key.c_str(), false));
+    preferences.end();
 }
 
 void PreferencesManager::teste(){

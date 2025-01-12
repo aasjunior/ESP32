@@ -11,8 +11,13 @@ void setup() {
 
   prefs.saveData("testInt", 46);
   prefs.saveData("testFloat", 3.14);
-  prefs.saveData("testString", "teste");
+  prefs.saveData("testString", std::string("teste"));
   prefs.saveData("testBool", true);
+
+  prefs.saveData("testInt", 49);
+  prefs.saveData("testFloat", 4.13);
+  prefs.saveData("testString", std::string("modified"));
+  prefs.saveData("testBool", false);
 
   //prefs.teste();
 }
