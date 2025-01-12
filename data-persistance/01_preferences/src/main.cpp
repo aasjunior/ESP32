@@ -1,12 +1,10 @@
 #include <Arduino.h>
-#include <nvs.h>
-#include <nvs_flash.h>
-#include <Preferences.h>
+#include "PreferencesManager.h"
 
 #define WRITE_MODE false
 #define READ_MODE true
 
-Preferences prefs;
+PreferencesManager prefs("teste");
 
 void listPreferences() {
   nvs_handle my_handle;
@@ -47,121 +45,7 @@ void checkMemoryUsage() {
 void setup() {
   Serial.begin(115200);
 
-  // Inicializa a NVS
-  nvs_flash_init();
-
-  prefs.begin("prefs", READ_MODE);
-  bool testPrefs = prefs.isKey("teste");
-
-  if (!testPrefs) {
-    prefs.end();
-    prefs.begin("prefs", WRITE_MODE);
-
-    prefs.putUChar("testChar", 10);
-    prefs.putString("testString", "teste");
-    prefs.putLong("testLong", -220226);
-    prefs.putBool("testBool", true);
-    prefs.putFloat("testFloat", 3.14);
-
-    prefs.end();
-  }
-
-  // Reabre em modo de leitura
-  prefs.begin("prefs", READ_MODE);
-
-  // Visualizar valores armazenados
-  Serial.print("testChar: ");
-  Serial.println(prefs.getUChar("testChar", 0));
-
-  Serial.print("testString: ");
-  Serial.println(prefs.getString("testString", "default"));
-
-  Serial.print("testLong: ");
-  Serial.println(prefs.getLong("testLong", 0));
-
-  Serial.print("testBool: ");
-  Serial.println(prefs.getBool("testBool", false));
-
-  Serial.print("testFloat: ");
-  Serial.println(prefs.getFloat("testFloat", 0.0));
-
-  // Listar todas as chaves e contar a quantidade de valores
-  Serial.println("Listing all keys and counting values:");
-  listPreferences();
-
-  // Verificar o uso de memória
-  Serial.println("Checking memory usage:");
-  checkMemoryUsage();
-
-  // Editar valores armazenados
-  prefs.end();
-  prefs.begin("prefs", WRITE_MODE);
-
-  prefs.putUChar("testChar", 20);
-  prefs.putString("testString", "modified");
-  prefs.putLong("testLong", -12345);
-  prefs.putBool("testBool", false);
-  prefs.putFloat("testFloat", 6.28);
-
-  prefs.end();
-
-  // Reabre em modo de leitura
-  prefs.begin("prefs", READ_MODE);
-
-  // Visualizar valores editados
-  Serial.print("Modified testChar: ");
-  Serial.println(prefs.getUChar("testChar", 0));
-
-  Serial.print("Modified testString: ");
-  Serial.println(prefs.getString("testString", "default"));
-
-  Serial.print("Modified testLong: ");
-  Serial.println(prefs.getLong("testLong", 0));
-
-  Serial.print("Modified testBool: ");
-  Serial.println(prefs.getBool("testBool", false));
-
-  Serial.print("Modified testFloat: ");
-  Serial.println(prefs.getFloat("testFloat", 0.0));
-
-  // Excluir valores armazenados
-  prefs.end();
-  prefs.begin("prefs", WRITE_MODE);
-
-  prefs.remove("testChar");
-  prefs.remove("testString");
-  prefs.remove("testLong");
-  prefs.remove("testBool");
-  prefs.remove("testFloat");
-
-  prefs.end();
-
-  // Reabre em modo de leitura para verificar exclusões
-  prefs.begin("prefs", READ_MODE);
-
-  Serial.print("Deleted testChar: ");
-  Serial.println(prefs.isKey("testChar") ? "exists" : "deleted");
-
-  Serial.print("Deleted testString: ");
-  Serial.println(prefs.isKey("testString") ? "exists" : "deleted");
-
-  Serial.print("Deleted testLong: ");
-  Serial.println(prefs.isKey("testLong") ? "exists" : "deleted");
-
-  Serial.print("Deleted testBool: ");
-  Serial.println(prefs.isKey("testBool") ? "exists" : "deleted");
-
-  Serial.print("Deleted testFloat: ");
-  Serial.println(prefs.isKey("testFloat") ? "exists" : "deleted");
-
-  Serial.println("Final listing of keys and count of values:");
-  listPreferences();
-
-  // Verificar o uso de memória novamente após as exclusões
-  Serial.println("Checking memory usage after deletions:");
-  checkMemoryUsage();
-
-  prefs.end();
+  prefs.teste();
 }
 
 void loop() {
