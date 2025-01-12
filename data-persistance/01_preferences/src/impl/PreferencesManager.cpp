@@ -165,3 +165,59 @@ long PreferencesManager::readData<long>(const std::string& key) {
     Serial.println(value);
     return value;
 }
+
+bool PreferencesManager::removeData(const std::string& key) {
+    preferences.begin(namespaceName, false); // Abre a sessão de escrita para permitir a remoção
+    bool success = preferences.remove(key.c_str()); // Remove a chave e armazena o resultado
+    preferences.end(); // Encerra a sessão de escrita
+
+    if (success) {
+        Serial.print("Chave removida com sucesso: ");
+    } else {
+        Serial.print("Falha ao remover a chave: ");
+    }
+    Serial.println(key.c_str());
+
+    return success;
+}
+
+void PreferencesManager::getInfo(){
+    checkMemoryUsage();
+    listPreferences();
+}
+
+void PreferencesManager::listPreferences(){
+    nvs_handle my_handle;
+    esp_err_t err = nvs_open(namespaceName, NVS_READWRITE, &my_handle);
+    if (err != ESP_OK) {
+        Serial.printf("\nError (%s) opening NVS handle!\n", esp_err_to_name(err));
+        return;
+    }
+
+    nvs_iterator_t it = nvs_entry_find(NVS_DEFAULT_PART_NAME, namespaceName, NVS_TYPE_ANY);
+    size_t count = 0;
+
+    while (it != NULL) {
+        nvs_entry_info_t info;
+        nvs_entry_info(it, &info);
+        Serial.printf("Namespace: %s, Key: %s, Type: %d\n", info.namespace_name, info.key, info.type);
+        it = nvs_entry_next(it);
+        count++;
+    }
+
+    Serial.printf("\nTotal keys stored: %d\n\n", count);
+    nvs_close(my_handle);
+}
+
+void PreferencesManager::checkMemoryUsage(){
+    nvs_stats_t nvs_stats;
+    esp_err_t err = nvs_get_stats(NVS_DEFAULT_PART_NAME, &nvs_stats);
+    if (err != ESP_OK) {
+        Serial.printf("\nError (%s) getting NVS stats!\n", esp_err_to_name(err));
+        return;
+    }
+
+    Serial.printf("\nCount: UsedEntries = (%d), FreeEntries = (%d), AllEntries = (%d)\n",
+                    nvs_stats.used_entries, nvs_stats.free_entries, nvs_stats.total_entries);
+    Serial.printf("\nNamespace Count: (%d)\n", nvs_stats.namespace_count);
+}

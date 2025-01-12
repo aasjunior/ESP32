@@ -22,14 +22,16 @@ public:
     template <typename T>
     T readData(const std::string& key);
 
+    bool removeData(const std::string& key);
 
-    void removeData(const std::string& key);
-
-    void teste();
+    void getInfo();
 
 private:
     Preferences preferences;
     const char* namespaceName;
+
+    void listPreferences();
+    void checkMemoryUsage();
 };
 
 template <> 
