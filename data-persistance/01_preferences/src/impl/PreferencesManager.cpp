@@ -100,36 +100,68 @@ void PreferencesManager::saveData<long>(const std::string& key, const long& valu
     preferences.end();
 }
 
-void PreferencesManager::teste(){
-    bool testPrefs = preferences.isKey("teste");
-
-    if (!testPrefs) {
-        preferences.end();
-        preferences.begin(namespaceName, false);
-
-        preferences.putUChar("testChar", 10);
-        preferences.putString("testString", "teste");
-        preferences.putLong("testLong", -220226);
-        preferences.putBool("testBool", true);
-        preferences.putFloat("testFloat", 3.14);
-
-        preferences.end();
-    }
-
+template <>
+int PreferencesManager::readData<int>(const std::string& key) {
     preferences.begin(namespaceName, true);
-    // Visualizar valores armazenados
-    Serial.print("testChar: ");
-    Serial.println(preferences.getUChar("testChar", 0));
+    int value = preferences.getInt(key.c_str(), 0);
+    preferences.end();
+    Serial.print(key.c_str());
+    Serial.print(": ");
+    Serial.println(value);
+    return value;
+}
 
-    Serial.print("testString: ");
-    Serial.println(preferences.getString("testString", "default"));
+template <>
+float PreferencesManager::readData<float>(const std::string& key) {
+    preferences.begin(namespaceName, true);
+    float value = preferences.getFloat(key.c_str(), 0.0f);
+    preferences.end();
+    Serial.print(key.c_str());
+    Serial.print(": ");
+    Serial.println(value);
+    return value;
+}
 
-    Serial.print("testLong: ");
-    Serial.println(preferences.getLong("testLong", 0));
+template <>
+std::string PreferencesManager::readData<std::string>(const std::string& key) {
+    preferences.begin(namespaceName, true);
+    std::string value = preferences.getString(key.c_str(), "default").c_str();
+    preferences.end();
+    Serial.print(key.c_str());
+    Serial.print(": ");
+    Serial.println(value.c_str());
+    return value;
+}
 
-    Serial.print("testBool: ");
-    Serial.println(preferences.getBool("testBool", false));
+template <>
+bool PreferencesManager::readData<bool>(const std::string& key) {
+    preferences.begin(namespaceName, true);
+    bool value = preferences.getBool(key.c_str(), false);
+    preferences.end();
+    Serial.print(key.c_str());
+    Serial.print(": ");
+    Serial.println(value);
+    return value;
+}
 
-    Serial.print("testFloat: ");
-    Serial.println(preferences.getFloat("testFloat", 0.0));
+template <>
+double PreferencesManager::readData<double>(const std::string& key) {
+    preferences.begin(namespaceName, true);
+    double value = preferences.getDouble(key.c_str(), 0.0);
+    preferences.end();
+    Serial.print(key.c_str());
+    Serial.print(": ");
+    Serial.println(value);
+    return value;
+}
+
+template <>
+long PreferencesManager::readData<long>(const std::string& key) {
+    preferences.begin(namespaceName, true);
+    long value = preferences.getLong(key.c_str(), 0.0);
+    preferences.end();
+    Serial.print(key.c_str());
+    Serial.print(": ");
+    Serial.println(value);
+    return value;
 }

@@ -5,6 +5,12 @@
 #include <nvs.h>
 #include <nvs_flash.h>
 
+template <typename T>
+struct Result{
+    bool status;
+    T value;
+};
+
 class PreferencesManager{
 public:
     PreferencesManager(const char* ns, bool isReadOnly = false);
@@ -14,7 +20,8 @@ public:
     void saveData(const std::string& key, const T& value);
 
     template <typename T>
-    void readData(const std::string& key, T& value);
+    T readData(const std::string& key);
+
 
     void removeData(const std::string& key);
 
@@ -24,5 +31,23 @@ private:
     Preferences preferences;
     const char* namespaceName;
 };
+
+template <> 
+bool PreferencesManager::readData<bool>(const std::string& key);
+
+template <> 
+int PreferencesManager::readData<int>(const std::string& key);
+
+template <> 
+long PreferencesManager::readData<long>(const std::string& key);
+
+template <> 
+float PreferencesManager::readData<float>(const std::string& key);
+
+template <> 
+double PreferencesManager::readData<double>(const std::string& key);
+
+template <> 
+std::string PreferencesManager::readData<std::string>(const std::string& key);
 
 #endif // PREFERENCES_MANAGER_H

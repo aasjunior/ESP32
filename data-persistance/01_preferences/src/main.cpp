@@ -21,6 +21,10 @@ void setup() {
   prefs.saveData("testBool", false);
   prefs.saveData("testLong", -12454124);
 
+  auto testInt = prefs.readData<int>("testInt");
+
+  Serial.println(testInt);
+
   //prefs.teste();
 }
 
