@@ -1,8 +1,8 @@
 #include "PreferencesManager.h"
 
-PreferencesManager::PreferencesManager(const char* ns) : namespaceName(ns){
+PreferencesManager::PreferencesManager(const char* ns, bool isReadOnly) : namespaceName(ns){
     nvs_flash_init();
-    preferences.begin(namespaceName, false);
+    preferences.begin(namespaceName, isReadOnly);
 }
 
 PreferencesManager::~PreferencesManager(){

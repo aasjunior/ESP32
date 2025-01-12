@@ -7,7 +7,7 @@
 
 class PreferencesManager{
 public:
-    PreferencesManager(const char* ns);
+    PreferencesManager(const char* ns, bool isReadOnly = false);
     ~PreferencesManager();
 
     void teste();
