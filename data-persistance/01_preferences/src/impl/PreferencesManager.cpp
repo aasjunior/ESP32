@@ -9,6 +9,22 @@ PreferencesManager::~PreferencesManager(){
     preferences.end();
 }
 
+template <>
+void PreferencesManager::saveData<int>(const char* key, const int& value){
+    if(!preferences.isKey(key)){
+        preferences.end();
+        preferences.begin(namespaceName, false);
+        preferences.putInt(key, value);
+        preferences.end();
+    }
+
+    preferences.begin(namespaceName, true);
+    Serial.println("Valor salvo com sucesso:");
+    Serial.print(key);
+    Serial.print(": ");
+    Serial.println(preferences.getInt(key, 0));
+}
+
 void PreferencesManager::teste(){
     bool testPrefs = preferences.isKey("teste");
 

@@ -10,6 +10,14 @@ public:
     PreferencesManager(const char* ns, bool isReadOnly = false);
     ~PreferencesManager();
 
+    template <typename T>
+    void saveData(const char* key, const T& value);
+
+    template <typename T>
+    void readData(const char* key, T& value);
+
+    void removeData(const char* key);
+
     void teste();
 
 private:

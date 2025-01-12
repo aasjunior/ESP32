@@ -9,6 +9,8 @@ PreferencesManager prefs("teste", READ_MODE);
 void setup() {
   Serial.begin(115200);
 
+  prefs.saveData("testInt", 46);
+
   prefs.teste();
 }
 
