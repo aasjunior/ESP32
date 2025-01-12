@@ -87,6 +87,19 @@ void PreferencesManager::saveData<bool>(const std::string& key, const bool& valu
     preferences.end();
 }
 
+template <>
+void PreferencesManager::saveData<long>(const std::string& key, const long& value){
+    preferences.end();
+    preferences.begin(namespaceName, false);
+    preferences.putLong(key.c_str(), value);
+    
+    Serial.println("Valor salvo com sucesso:");
+    Serial.print(key.c_str());
+    Serial.print(": ");
+    Serial.println(preferences.getLong(key.c_str(), -1));
+    preferences.end();
+}
+
 void PreferencesManager::teste(){
     bool testPrefs = preferences.isKey("teste");
 
