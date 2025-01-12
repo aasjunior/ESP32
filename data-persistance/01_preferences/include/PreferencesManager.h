@@ -11,12 +11,12 @@ public:
     ~PreferencesManager();
 
     template <typename T>
-    void saveData(const char* key, const T& value);
+    void saveData(const std::string& key, const T& value);
 
     template <typename T>
-    void readData(const char* key, T& value);
+    void readData(const std::string& key, T& value);
 
-    void removeData(const char* key);
+    void removeData(const std::string& key);
 
     void teste();
 
